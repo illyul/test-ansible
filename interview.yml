@@ -4,8 +4,8 @@
   gather_facts: True
   vars:
     renew_certification : true
-    nginx_user: '{{ $secrets.NGINX_USER }}'
-    nginx_pass: '{{ $secrets.NGINX_PASS }}'
+    nginx_user: '{{ nginx_user }}'
+    nginx_pass: '{{ nginx_pass }}'
   pre_tasks:
     - set_fact:
         host_ip: "{{ ansible_default_ipv4.address }}"
