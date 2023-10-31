@@ -1,0 +1,22 @@
+name: Test Action
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  remote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run playbook
+        uses: dawidd6/action-ansible-playbook@v2
+        with:
+          playbook: interview.yml
+          directory: ./
+          key: ${{secrets.SSH_PRIVATE_KEY}}
+          options: |
+            --inventory hosts
+            --extra-vars host=lab
+            --verbose
